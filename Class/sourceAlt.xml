@@ -1,0 +1,72 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<strings>
+	<!-- SCRITTA SUL BOTTONE DI LOG IN -->
+	<code id = "LIN">
+		<lang id = "DEF">
+			<value>LOG IN</value>
+		</lang>
+		<lang id = "IT">
+			<value>ACCEDI</value>
+		</lang>
+		<lang id = "EN">
+			<value>LOG IN</value>
+		</lang>
+		<lang id = "FR">
+			<value>LOG IN in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>LOG IN in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>LOG IN in tedesco</value>
+		</lang>
+		<lang id = "BG">
+			<value>Èntra Dët</value>
+		</lang>
+	</code>
+	<!-- SCRITTA PER LA REGISTRAZIONE -->
+	<code id = "SUP">
+		<lang id = "DEF">
+			<value>Sign Up</value>
+		</lang>
+		<lang id = "IT">
+			<value>Registrati</value>
+		</lang>
+		<lang id = "EN">
+			<value>Sign Up</value>
+		</lang>
+		<lang id = "FR">
+			<value>Registrati in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>Registrati in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>Registrati in tedesco</value>
+		</lang>
+		<lang id = "BG">
+			<valude>Të sët desmentegàt la pàssuord?</valude>
+		</lang>
+	</code>
+	<!-- SCRITTA PER IL RECUPERO PASSWORD -->
+	<code id = "LPS">
+		<lang id = "DEF">
+			<value>Lost password?</value>
+		</lang>
+		<lang id = "IT">
+			<value>Password dimenticata?</value>
+		</lang>
+		<lang id = "EN">
+			<value>Lost password?</value>
+		</lang>
+		<lang id = "FR">
+			<value>Password dimenticata? in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>Password dimenticata? in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>Password dimenticata? in tedesco</value>
+		</lang>
+	</code>
+</strings>

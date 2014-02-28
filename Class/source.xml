@@ -1,0 +1,108 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<strings>
+	<!-- SCRITTA SUL BOTTONE DI LOG IN -->
+	<code id = "LIN">
+		<lang id = "DEF">
+			<value>Log In</value>
+		</lang>
+		<lang id = "IT">
+			<value>Accedi</value>
+		</lang>
+		<lang id = "EN">
+			<value>Log In</value>
+		</lang>
+		<lang id = "FR">
+			<value>Log In in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>Log In in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>Log In in tedesco</value>
+		</lang>
+	</code>
+	<!-- SCRITTA PER LA REGISTRAZIONE -->
+	<code id = "SUP">
+		<lang id = "DEF">
+			<value>Sign Up</value>
+		</lang>
+		<lang id = "IT">
+			<value>Registrati</value>
+		</lang>
+		<lang id = "EN">
+			<value>Sign Up</value>
+		</lang>
+		<lang id = "FR">
+			<value>Registrati in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>Registrati in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>Registrati in tedesco</value>
+		</lang>
+	</code>
+	<!-- SCRITTA PER IL RECUPERO PASSWORD -->
+	<code id = "LPS">
+		<lang id = "DEF">
+			<value>Lost password?</value>
+		</lang>
+		<lang id = "IT">
+			<value>Password dimenticata?</value>
+		</lang>
+		<lang id = "EN">
+			<value>Lost password?</value>
+		</lang>
+		<lang id = "FR">
+			<value>Password dimenticata? in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>Password dimenticata? in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>Password dimenticata? in tedesco</value>
+		</lang>
+	</code>
+	<!-- SCRITTA DEL PLACEHOLDER PER LO USERNAME -->
+	<code id = "USR">
+		<lang id = "DEF">
+			<value>Username</value>
+		</lang>
+		<lang id = "IT">
+			<value>Nome Utente</value>
+		</lang>
+		<lang id = "EN">
+			<value>Username</value>
+		</lang>
+		<lang id = "FR">
+			<value>Username in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>Username in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>Username in tedesco</value>
+		</lang>
+	</code>
+	<!-- SCRITTA DEL PLACEHOLDER PER LA PASSWORD -->
+	<code id = "PSS">
+		<lang id = "DEF">
+			<value>Password</value>
+		</lang>
+		<lang id = "IT">
+			<value>Password</value>
+		</lang>
+		<lang id = "EN">
+			<value>Password</value>
+		</lang>
+		<lang id = "FR">
+			<value>Password in francese</value>
+		</lang>
+		<lang id = "ES">
+			<value>Password in spagnolo</value>
+		</lang>
+		<lang id = "DE">
+			<value>Password in tedesco</value>
+		</lang>
+	</code>
+</strings>
