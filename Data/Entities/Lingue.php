@@ -1,4 +1,4 @@
-D<?php
+<?php
 	// This are error reporting settings, if you have finished to create this class comment it
 	ini_set('error_reporting', E_ALL);
 	ini_set("display_errors", 1);

@@ -31,10 +31,10 @@
 
 
 		/* MAKE METHOD */
-		// This method allow to you to create an object of Utente or UtenteWithJoinEntity
-		// or EntityWithJoinEntityWithJoinEntity and so on to save the result of a Join
+		// This method allow to you to create an object of Utente or UtenteWithOptions
+		// or EntityWithOptionsWithOptions and so on to save the result of a Join
 		// I suggest to create a Entity for a specific View and don't write 'make' function with
-		// 3 or more entity to have a clear result and a easy remember JoinEntity class
+		// 3 or more entity to have a clear result and a easy remember Options class
 
 		// makeUtente: Return an object of type Utente
 		public function makeUtente($row)
@@ -56,22 +56,28 @@
 			return $Utente;
 		}
 
-		// makeUtenteWithJoinEntity
+		// makeUtenteWithOptions
 		public function makeUtenteWithOptions($row)
 		{
 			// TODO: Controllare spezzamento array e passaggio di variabili, al massimo si fa for
 			$UtenteWithOptions = new UtenteWithOptions();
-			$UtenteWithOptions->idUtente  = $row['id_utente'];
-			$UtenteWithOptions->cf        = $row['c_f'];
-			$UtenteWithOptions->nome      = $row['nome'];
-			$UtenteWithOptions->cognome   = $row['cognome'];
-			$UtenteWithOptions->email     = $row['email'];
-			$UtenteWithOptions->indirizzo = $row['indirizzo'];
-			$UtenteWithOptions->piva      = $row['p_iva'];
-			$UtenteWithOptions->password  = $row['password'];
-			$UtenteWithOptions->idLingua  = $row['id_lingua'];
-			$UtenteWithOptions->idValuta  = $row['id_valuta'];
-			// TODO: FINIRE
+			$UtenteWithOptions->idUtente 	  = $row['id_utente'];
+			$UtenteWithOptions->cf 			  = $row['c_f'];
+			$UtenteWithOptions->nome 		  = $row['nome'];
+			$UtenteWithOptions->cognome 	  = $row['cognome'];
+			$UtenteWithOptions->email 		  = $row['email'];
+			$UtenteWithOptions->indirizzo 	  = $row['indirizzo'];
+			$UtenteWithOptions->piva 		  = $row['p_iva'];
+			$UtenteWithOptions->password 	  = $row['password'];
+			$UtenteWithOptions->idLingua 	  = $row['id_lingua'];
+			$UtenteWithOptions->l_descrizione = $row['lingue.descrizione'];
+			$UtenteWithOptions->l_codice 	  = $row['lingue.codice'];
+			$UtenteWithOptions->idValuta  	  = $row['id_valuta'];
+			$UtenteWithOptions->v_codice 	  = $row['valuta.codice'];
+			$UtenteWithOptions->v_descrizione = $row['valuta.descrizione'];
+			$UtenteWithOptions->v_tassoCambio = $row['valuta.tassoCambio'];
+			$UtenteWithOptions->v_codiceHTML  = $row['valuta.codiceHTML'];
+			$UtenteWithOptions->v_codiceFA 	  = $row['valuta.codiceFA']
 			return $UtenteWithOptions;
 		}
 
@@ -97,14 +103,14 @@
 
 		// getAllFromArgument: select all the record of Utente with the passed argument equals at the one of all record
 		// You can change the argument or add it using getAllFromArgument1AndArgument2OrArgument3 for a more clear function's name
-		public function getAllFromArgument($argument)
+		public function getAllFromId($argument)
 		{
 			$UtenteList;
 			$arguments = func_get_args();
 			$Utente = new Utente();
 			// Replace the name of the stored procedure with the right one, here I suggest a type for the name
 			// You can call the procedure with other name, I use p_Utente_NameOfFunction
-			$result = $this->readDataFromStoredProcedure("p_Utente_GetAllFromArgument");
+			$result = $this->readDataFromStoredProcedure("p_Utente_GetAllFromId", $arguments);
 			$i = 0;
 			foreach($result as $element)
 			{
@@ -115,24 +121,42 @@
 			return $UtenteList;
 		}
 
-		// getAllWithJoinEntity: select all the record of Utente joined with JoinEntity table and return an array of UtenteWithEntityJoin object
-		public function getAllWithJoinEntity()
+		// getAllWithOptions: select all the record of Utente joined with Options table and return an array of UtenteWithEntityJoin object
+		public function getAllWithOptions()
 		{
-			$UtenteWithJoinEntityList;
-			$UtenteWithJoinEntity = new UtenteWithJoinEntity();
+			$UtenteWithOptionsList;
+			$UtenteWithOptions = new UtenteWithOptions();
 			// Replace the name of the stored procedure with the right one, here I suggest a type for the name
 			// You can call the procedure with other name, I use p_BOUtente_NameOfFunction
-			$result = $this->readDataFromStoredProcedure("p_Utente_GetAllWithJoinEntity");
+			$result = $this->readDataFromStoredProcedure("p_Utente_GetAllWithOptions");
 			$i = 0;
 			foreach($result as $element)
 			{
-				$UtenteWithJoinEntity = $this->makeUtente($element);
-				$UtenteWithJoinEntityList[$i] = $UtenteWithJoinEntity;
+				$UtenteWithOptions = $this->makeUtenteWithOptions($element);
+				$UtenteWithOptionsList[$i] = $UtenteWithOptions;
 				$i++;
 			}
-			return $UtenteList;
+			return $UtenteWithOptionsList;
 		}
 
+		public function getAllWithOptionsFromId($argument)
+		{
+			$UtenteWithOptionsList;
+			$arguments = func_get_args();
+			$UtenteWithOptions = new UtenteWithOptions();
+			// Replace the name of the stored procedure with the right one, here I suggest a type for the name
+			// You can call the procedure with other name, I use p_BOUtente_NameOfFunction
+			$result = $this->readDataFromStoredProcedure("p_Utente_GetAllWithOptionsFromId", $arguments);
+			$i = 0;
+			foreach($result as $element)
+			{
+				$UtenteWithOptions = $this->makeUtenteWithOptions($element);
+				$UtenteWithOptionsList[$i] = $UtenteWithOptions;
+				$i++;
+			}
+			return $UtenteWithOptionsList;
+		}
+		
 		// insertUtente: insert a record in the Utente table in the database
 		// you can insert all the arguments you want, I suggest you to don't pass a Utente object 'cause this class are
 		// implemented for a clear reading of result, Utente should not be created without this function
@@ -147,10 +171,10 @@
 		// you can insert all the arguments you want, I suggest you to don't pass a Utente object 'cause this class are
 		// implemented for a clear reading of result, Utente should not be created without this function
 		// if there is a serial primary key you can not pass it, if the varX accept NULL value and you want to insert NULL value pass NULL
-		public function insertUtenteWithJoinEntity($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $varA = NULL, $varB = NULL, $varC = NULL)
+		public function insertUtenteWithOptions($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $varA = NULL, $varB = NULL, $varC = NULL)
 		{
 			$arguments = func_get_args();
-			$this->callStoredProcedure("p_Utente_InsertUtenteWithJoinEntity", $arguments);
+			$this->callStoredProcedure("p_Utente_InsertUtenteWithOptions", $arguments);
 		}
 
 		// updateUtente: insert a record in the Utente table in the database
@@ -158,7 +182,7 @@
 		// implemented for a clear reading of result, Utente should not be created without this function
 		// if the varX accept NULL value and you want to insert NULL value pass NULL
 		// NOTICE: When you call this function if the ON UPDATE property of FK is CASCADE all the record are deleted else
-		//		   if the value is setted to NO ACTION you have to delete all record in JoinEntity before delete Utente
+		//		   if the value is setted to NO ACTION you have to delete all record in Options before delete Utente
 		public function updateUtente($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $var5 = NULL, $var6 = NULL)
 		{
 			$arguments = func_get_args();
@@ -170,9 +194,9 @@
 		// implemented for a clear reading of result, Utente should not be created without this function
 		// if the varX accept NULL value and you want to insert NULL value pass NULL
 		// NOTICE: When you call this function if the ON UPDATE property of FK is CASCADE all the record are deleted else
-		//		   if the value is setted to NO ACTION you have to delete all record in JoinEntity before delete Utente
+		//		   if the value is setted to NO ACTION you have to delete all record in Options before delete Utente
 		//		   If you are using NO ACTION I suggest to don't implements this function and to simply delete it
-		public function updateUtenteWithJoinEntity($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $varA = NULL, $varB = NULL, $varC = NULL)
+		public function updateUtenteWithOptions($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $varA = NULL, $varB = NULL, $varC = NULL)
 		{
 			$arguments = func_get_args();
 			$this->callStoredProcedure("p_Utente_UpdateUtente", $arguments);
@@ -183,7 +207,7 @@
 		// implemented for a clear reading of result, Utente should not be created without this function
 		// if the varX accept NULL value and you want to insert NULL value pass NULL
 		// NOTICE: When you call this function if the ON DELETE property of FK is CASCADE all the record are deleted else
-		//		   if the value is setted to NO ACTION you have to delete all record in JoinEntity before delete Utente
+		//		   if the value is setted to NO ACTION you have to delete all record in Options before delete Utente
 		public function deleteUtente($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $var5 = NULL, $var6 = NULL)
 		{
 			$arguments = func_get_args();
@@ -195,13 +219,8 @@
 		// implemented for a clear reading of result, Utente should not be created without this function
 		// if the varX accept NULL value and you want to insert NULL value pass NULL
 		// NOTICE: When you call this function if the ON DELETE property of FK is CASCADE all the record are deleted else
-		//		   if the value is setted to NO ACTION you have to delete all record in JoinEntity before delete Utente
+		//		   if the value is setted to NO ACTION you have to delete all record in Options before delete Utente
 		//		   If you are using NO ACTION I suggest to don't implements this function and to simply delete it
-		public function deleteUtente($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $varA = NULL, $varB = NULL, $varC = NULL)
-		{
-			$arguments = func_get_args();
-			$this->callStoredProcedure("p_Utente_DeleteUtente", $arguments);
-		}
 
 		// you can implement other function, like ones that don't return an Utente object,
 		// e.g. if I have to implements the function that return me the sum of the Var2 in Utente table you can implements a function like this
