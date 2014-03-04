@@ -15,8 +15,8 @@
 	*/
 
 	/* INCLUDE BOBASE, ENTITYBASE AND Utente ENTITIY */
-	include_once $_SERVER['DOCUMENT_ROOT']."/BD/Data/BOs/BOBase.php";
-	include_once $_SERVER['DOCUMENT_ROOT']."/BD/Data/Entities/EntityBase.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/BDLAB/TRUNK/Data/BOs/BOBase.php";
+	include_once $_SERVER['DOCUMENT_ROOT']."/BDLAB/TRUNK/Data/Entities/EntityBase.php";
 	include_once $_SERVER['DOCUMENT_ROOT']."/BD/Data/Entities/Utente.php";
 
 	class BOUtente extends BOBase
@@ -59,7 +59,6 @@
 		// makeUtenteWithOptions
 		public function makeUtenteWithOptions($row)
 		{
-			// TODO: Controllare spezzamento array e passaggio di variabili, al massimo si fa for
 			$UtenteWithOptions = new UtenteWithOptions();
 			$UtenteWithOptions->idUtente 	  = $row['id_utente'];
 			$UtenteWithOptions->cf 			  = $row['c_f'];
@@ -77,7 +76,7 @@
 			$UtenteWithOptions->v_descrizione = $row['valuta.descrizione'];
 			$UtenteWithOptions->v_tassoCambio = $row['valuta.tassoCambio'];
 			$UtenteWithOptions->v_codiceHTML  = $row['valuta.codiceHTML'];
-			$UtenteWithOptions->v_codiceFA 	  = $row['valuta.codiceFA']
+			$UtenteWithOptions->v_codiceFA 	  = $row['valuta.codiceFA'];
 			return $UtenteWithOptions;
 		}
 
@@ -161,12 +160,14 @@
 		// you can insert all the arguments you want, I suggest you to don't pass a Utente object 'cause this class are
 		// implemented for a clear reading of result, Utente should not be created without this function
 		// if there is a serial primary key you can not pass it, if the varX accept NULL value and you want to insert NULL value pass NULL
-		public function insertUtente($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $var5 = NULL, $var6 = NULL)
+		public function insertUtente($idUtente, $cf, $nome, $cognome, $email, $indirizzo, $piva = NULL, $password, $idLingua, $idValuta)
 		{
 			$arguments = func_get_args();
 			$this->callStoredProcedure("p_Utente_InsertUtente", $arguments);
 		}
 
+		
+		
 		// insertUtente: insert a record in the Utente table in the database
 		// you can insert all the arguments you want, I suggest you to don't pass a Utente object 'cause this class are
 		// implemented for a clear reading of result, Utente should not be created without this function
