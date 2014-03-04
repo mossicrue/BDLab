@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generato il: Mar 04, 2014 alle 08:04
+-- Generato il: Mar 04, 2014 alle 16:07
 -- Versione del server: 5.6.14
 -- Versione PHP: 5.5.6
 
@@ -190,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `conto_credito` (
   `numero_carta` varchar(16) NOT NULL,
   `scadenza` date NOT NULL,
   `id_conto` int(11) unsigned NOT NULL,
+  `cancellato` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'Se 1 ultimo mese e poi viene cancellato il conto',
   PRIMARY KEY (`id_conto_credito`),
   KEY `fk_credito_conto` (`id_conto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -273,6 +274,7 @@ CREATE TABLE IF NOT EXISTS `movimento_programmato` (
   `id_conto` int(10) unsigned NOT NULL,
   `id_carta` int(10) unsigned DEFAULT NULL,
   `id_categoria` int(10) unsigned NOT NULL,
+  `cancellato` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_movimento_programmato`),
   KEY `fk_programmato_categoria` (`id_categoria`),
   KEY `fk_programmato_conto` (`id_conto`),
