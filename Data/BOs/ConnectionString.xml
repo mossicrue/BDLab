@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding="utf-8"?>
+<connection>
+	<type id = "BOINCLUDE" >
+		/BDLAB/TRUNK/Data/
+	</type>
+	<type id = "DBCONNECTION" >
+		<var id = "host" >
+			localhost
+		</var>
+		<var id = "dbName" >
+			progetto_db
+		</var>
+	</type>
+</connection>

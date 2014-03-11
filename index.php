@@ -1,7 +1,7 @@
 <?php
 	include_once "Class/LocalizedString.php";
-	//$lang = "IT";
-	$lang = $_REQUEST['lang'];
+	$lang = "IT";
+	//$lang = $_REQUEST['lang'];
 ?>
 <!DOCTYPE HTML>
 <html>
