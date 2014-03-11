@@ -91,21 +91,47 @@
 	HOME.PHP -> Master-Detail page with ajax for content
 */
 
-.homeWrapperDiv
+
+/*
+img
 {
-	height: 5%;
-	width: 100%;
-	background-color: green;
+opacity:0.4;
+filter:alpha(opacity=40); /* For IE8 and earlier 
 }
+img:hover
+{
+opacity:1.0;
+filter:alpha(opacity=100); /* For IE8 and earlier 
+}
+*/
+
+.homeWrapperDiv
+{	
+	position:fixed;
+	height:15%;
+	width: 100%;
+	background-color: white;
+	-webkit-filter: blur(10px);
+	opacity:1.5;
+	filter: blur(10px);
+	}
+	/*
+.homeWrapperDiv:hover
+{
+	opacity:1.0;
+	height:15%;
+	width: 100%;	
+}
+*/
 
 .masterDiv
 {
-	width: 300px;
-	background-color: red;
-	height: 95%;
-	float: left;
+	width: 100%;
+	background-color: grey;
+	/*float: left;*/
 }
 
+/*
 .detailDiv
 {
 	width: auto;
@@ -113,7 +139,7 @@
 	height: 95%;
 	overflow-y: scroll;
 }
-
+*/
 .contentDiv
 {
 	height: auto;
