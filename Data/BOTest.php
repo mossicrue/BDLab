@@ -6,14 +6,20 @@
 	include_once "/BOs/BOUtente.php";
 	include_once "/Entities/Utente.php";
 	$BO = new BOUtente("localhost", "root", "", "test_db");
-	$utente;
-	$utente = $attoreBO->getAll();
-	foreach($utente as $u)
+	$utente = NULL;
+	$utente = $BO->getAll();
+	if($utente)
 	{
-		echo "</br></br>".gettype($u).":  ";
-		echo $u->nome."</br>";
+		foreach($utente as $u)
+		{
+			echo "</br></br>".gettype($u).":  ";
+			echo $u->nome."</br>";
+		}
 	}
-	$input = "futtupavde21"; 
-	$output = hash("sha512", $input);
-	echo $output;
+	else
+	{
+		$input = "futtupavde21"; 
+		$output = hash("sha512", $input);
+		echo $output;
+	}
 ?>

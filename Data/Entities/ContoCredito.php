@@ -26,5 +26,6 @@
 		public $numeroCarta;
 		public $scadenza;
 		public $idConto;
+		public $cancellato;
 	}
 ?>

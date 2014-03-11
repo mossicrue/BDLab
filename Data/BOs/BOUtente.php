@@ -5,6 +5,9 @@
 	// This are error reporting settings, if you have finished to create this class comment it
 	ini_set('error_reporting', E_ALL);
 	ini_set("display_errors", 1);
+	
+	// Configuration string for include path
+	$include_path = $_SERVER['DOCUMENT_ROOT']."/BDLAB/TRUNK/Data/";
 
 	/*
 	*********************************************************************************************************
@@ -15,16 +18,16 @@
 	*/
 
 	/* INCLUDE BOBASE, ENTITYBASE AND Utente ENTITIY */
-	include_once $_SERVER['DOCUMENT_ROOT']."/BDLAB/TRUNK/Data/BOs/BOBase.php";
-	include_once $_SERVER['DOCUMENT_ROOT']."/BDLAB/TRUNK/Data/Entities/EntityBase.php";
-	include_once $_SERVER['DOCUMENT_ROOT']."/BD/Data/Entities/Utente.php";
+	include_once $include_path."BOs/BOBase.php";
+	include_once $include_path."Entities/EntityBase.php";
+	include_once $include_path."Entities/Utente.php";
 
 	class BOUtente extends BOBase
 	{
 		/* CONSTRUCTOR */
 		// Call BOBase construct to create a BOUtente with the passed arguments
 		// Notice: if an arguments is not required pass NULL or an empty string
-		public function __construct ($user = NULL, $password = NULL, $host = NULL, $dbName = NULL)
+		public function __construct ($host = NULL, $user = NULL, $password = NULL, $dbName = NULL)
 		{
 			parent::__construct($host, $user, $password, $dbName);
 		}
@@ -85,17 +88,24 @@
 		// getAll: select all the record of Utente table and return an array of object with type Utente
 		public function getAll()
 		{
-			$UtenteList;
+			$UtenteList = array();
 			$Utente = new Utente();
 			// Replace the name of the stored procedure with the right one, here I suggest a type for the name
 			// You can call the procedure with other name, I use p_Utente_NameOfFunction
 			$result = $this->readDataFromStoredProcedure("p_Utente_GetAll");
 			$i = 0;
-			foreach($result as $element)
+			if($result)
 			{
-				$Utente = $this->makeUtente($element);
-				$UtenteList[$i] = $Utente;
-				$i++;
+				foreach($result as $element)
+				{
+					$Utente = $this->makeUtente($element);
+					$UtenteList[$i] = $Utente;
+					$i++;
+				}
+			}
+			else
+			{
+				$UtenteList = NULL;
 			}
 			return $UtenteList;
 		}
@@ -111,11 +121,18 @@
 			// You can call the procedure with other name, I use p_Utente_NameOfFunction
 			$result = $this->readDataFromStoredProcedure("p_Utente_GetAllFromId", $arguments);
 			$i = 0;
-			foreach($result as $element)
+			if($result != NULL)
 			{
-				$Utente = $this->makeUtente($element);
-				$UtenteList[$i] = $Utente;
-				$i++;
+				foreach($result as $element)
+				{
+					$Utente = $this->makeUtente($element);
+					$UtenteList[$i] = $Utente;
+					$i++;
+				}
+			}
+			else
+			{
+				$UtenteList = NULL;
 			}
 			return $UtenteList;
 		}
@@ -147,11 +164,18 @@
 			// You can call the procedure with other name, I use p_BOUtente_NameOfFunction
 			$result = $this->readDataFromStoredProcedure("p_Utente_GetAllWithOptionsFromId", $arguments);
 			$i = 0;
-			foreach($result as $element)
+			if($result != NULL)
 			{
-				$UtenteWithOptions = $this->makeUtenteWithOptions($element);
-				$UtenteWithOptionsList[$i] = $UtenteWithOptions;
-				$i++;
+				foreach($result as $element)
+				{
+					$UtenteWithOptions = $this->makeUtenteWithOptions($element);
+					$UtenteWithOptionsList[$i] = $UtenteWithOptions;
+					$i++;
+				}
+			}
+			else
+			{
+				$UtenteWithOptionsList = NULL;
 			}
 			return $UtenteWithOptionsList;
 		}
@@ -164,18 +188,6 @@
 		{
 			$arguments = func_get_args();
 			$this->callStoredProcedure("p_Utente_InsertUtente", $arguments);
-		}
-
-		
-		
-		// insertUtente: insert a record in the Utente table in the database
-		// you can insert all the arguments you want, I suggest you to don't pass a Utente object 'cause this class are
-		// implemented for a clear reading of result, Utente should not be created without this function
-		// if there is a serial primary key you can not pass it, if the varX accept NULL value and you want to insert NULL value pass NULL
-		public function insertUtenteWithOptions($var1 = NULL, $var2 = NULL, $var3 = NULL, $var4 = NULL, $varA = NULL, $varB = NULL, $varC = NULL)
-		{
-			$arguments = func_get_args();
-			$this->callStoredProcedure("p_Utente_InsertUtenteWithOptions", $arguments);
 		}
 
 		// updateUtente: insert a record in the Utente table in the database

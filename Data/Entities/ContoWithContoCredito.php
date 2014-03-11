@@ -28,5 +28,6 @@
 		public $cc_idContoCredito;
 		public $cc_numeroCarta;
 		public $cc_scadenza;
+		public $cancellato;
 	}
 ?>

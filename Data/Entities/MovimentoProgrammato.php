@@ -30,6 +30,7 @@
 		public $idConto;
 		public $idCarta;
 		public $idCategoria;
+		public $cancellato;
 
 	}
 ?>

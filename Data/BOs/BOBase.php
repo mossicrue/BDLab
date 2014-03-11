@@ -180,12 +180,20 @@
 			$res = mysql_query($query, $this->dbConnection);
 			$vett = array();
 			$i = 0;
-			while($row = mysql_fetch_array($res, MYSQL_ASSOC))
+			$numRes = mysql_affected_rows();
+			if($numRes != 0)
 			{
-				$vett[$i] = $row;
-				$i++;
+				while($row = mysql_fetch_array($res, MYSQL_ASSOC))
+				{
+					$vett[$i] = $row;
+					$i++;
+				}
+				$this->clearResultAndCloseConnection($res);
 			}
-			$this->clearResultAndCloseConnection($res);
+			else
+			{
+				$vett = NULL;
+			}
 			return $vett;
 		}
 
