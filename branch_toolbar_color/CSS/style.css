@@ -1,0 +1,155 @@
+/*
+	GENERAL UTILITY
+*/
+
+.left
+{
+	float: left;
+	margin-left: 10px;
+}
+
+.right
+{
+	float: right;
+	margin-right: 10px;
+}
+
+.noMargin
+{
+	margin: 0px;
+}
+
+.central
+{
+	display: block;
+	margin: auto;
+}
+
+.form
+{
+	margin-top: 50px;
+	height: 105px;
+	width: 500px;
+	border: 1px solid black;
+}
+
+.inputDiv
+{
+	height: 105px;
+	margin-left: 0px;
+	margin-right: 10px;
+	width: 385px;
+}
+
+.input
+{
+	margin-top: 10px;
+	width: 380px;
+}
+
+.link
+{
+	text-decoration: none;
+}
+
+.centralFAIcon
+{
+	display: block;
+	text-align: center;
+}
+
+.button
+{
+	
+}
+
+/*
+	INDEX.PHP -> Log In page with lost password link
+*/
+
+.logInImage
+{
+	height: 85px;
+	width: 85px;
+	margin: 10px;
+	font-size: 105px;
+}
+
+.logInImage li
+{
+	margin-top: -5px;
+}
+
+.logInDiv
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+/*
+	HOME.PHP -> Master-Detail page with ajax for content
+	24D5FF
+	2C53FF
+*/
+
+
+.homeWrapperDiv
+{	
+	position:fixed;
+	height: 45px;
+	width: 100%;
+	background-color: #24D5FF;
+	opacity: 0.1;
+	top: 0px;
+}
+
+.homeWrapperDiv:hover
+{
+	opacity: 1.0;
+}
+
+.masterDiv
+{
+	width: 100%;
+	background-color: white;
+}
+
+.contentDiv
+{
+	/* height: auto; */
+}
+
+.contentOffset
+{
+	margin-top: 50px;
+}
+
+a.linkWrapper:link
+{
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+	padding: 5px 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+a.linkWrapper:hover
+{
+	background-color: #248EFF;
+}
+
+a.linkWrapper:visited
+{
+	color: white;
+	text-decoration: none;
+	/*padding: 5px 10px;*/
+}
+.link
+{
+	margin-top: 10px;
+	float: left;
+	margin-left: 10px;
+}
