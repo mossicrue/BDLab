@@ -89,6 +89,8 @@
 
 /*
 	HOME.PHP -> Master-Detail page with ajax for content
+	24D5FF
+	2C53FF
 */
 
 
@@ -97,7 +99,7 @@
 	position:fixed;
 	height:10%;
 	width: 100%;
-	background-color: #D1D1D1;
+	background-color: #24D5FF;
 	opacity:0.2;
 	}
 
@@ -106,7 +108,7 @@
 	opacity:1.0;
 	height:10%;
 	width: 100%;
-	background-color: #0c19e8;	
+	background-color: #24D5FF;	
 }
 
 .masterDiv
@@ -120,6 +122,27 @@
 	height: auto;
 }
 
+a.linkWrapper:link
+{
+color: black;
+text-decoration: none;
+padding: 5px 10px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+a.linkWrapper:hover
+{
+background-color: #1890FF;
+}
+
+a.linkWrapper:visited
+{
+color: white;
+text-decoration: none;
+/*padding: 5px 10px;*/
+}
 #link1
 {
 position:fixed;

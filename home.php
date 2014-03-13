@@ -9,10 +9,10 @@
 	<body>
 		<div class = "homeWrapperDiv" >
 			<div id="link1">
-			<a href="https://www.google.it/"> GOOGLE </a>
+			<a class ="linkWrapper" href="https://www.google.it/"> Link1 </a>
 			</div>
 			<div id="link2">
-			<a href="https://www.google.it/"> GOOGLE </a>
+			<a class ="linkWrapper" href="https://www.google.it/"> Link2 </a>
 			</div>
 		</div>		
 		<div class = "masterDiv">
